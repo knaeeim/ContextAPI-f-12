@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { AppContext } from "./CreateContext";
 
 const ContextProv = ({ children }) => {
-    
+    const [loading, setLoading] = useState(true);
+    const [appoinments, setAppoinments] = useState([]); 
 
     const handleAppointmentOfDoctors = (doctors) => {
-        console.log("I got it", doctors);
+        setAppoinments((prev) => [...prev, doctors])
     }
 
     const [user, setUser] = useState({ name : "Rahim", age : 20})
@@ -14,6 +15,10 @@ const ContextProv = ({ children }) => {
         handleAppointmentOfDoctors, 
         user, 
         setUser,
+        loading, 
+        setLoading, 
+        appoinments, 
+        setAppoinments
     }
 
     return (

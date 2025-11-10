@@ -7,6 +7,7 @@ const Navbar = () => {
         <div className='flex justify-center gap-5 text-lg font-bold'>
             <NavLink className={({isActive})=> isActive ? "border-b-4 text-green-600" : ""} to={'/'}>Home</NavLink>
             <NavLink className={({isActive})=> isActive ? "border-b-4 text-green-600" : ""} to={'/doctors'}>Doctors</NavLink>
+            <NavLink className={({isActive})=> isActive ? "border-b-4 text-green-600" : ""} to={'/appointments'}>Appointments</NavLink>
             <NavLink className={({isActive})=> isActive ? "border-b-4 text-green-600" : ""} to={'/about'}>About</NavLink>
             <NavLink className={({isActive})=> isActive ? "border-b-4 text-green-600" : ""} to={'/contact-us'}>Contact Us</NavLink>
         </div>

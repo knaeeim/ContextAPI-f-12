@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import DoctorCard from './DoctorCard';
 import { AppContext } from './Context/CreateContext';
+import LoadingPage from './LoadingPage';
 
 const Doctors = () => {
     const data = useLoaderData();
     const [doctors, setDoctors] = useState(data)
+    const {loading, setLoading} = useContext(AppContext);
+
+    useEffect(() => {
+        setDoctors(data);
+        setLoading(false);
+    }, [data, setLoading])
 
     const handleSearchDoctors = (e) => {
         e.preventDefault();
@@ -17,6 +24,10 @@ const Doctors = () => {
         else{
             setDoctors(data);
         }
+    }
+
+    if(loading){
+        return <LoadingPage></LoadingPage>;
     }
 
 
@@ -34,7 +45,7 @@ const Doctors = () => {
             </div>
             <div className='grid grid-cols-3 gap-10 justify-items-center mb-16'>
                 {
-                    doctors.map((doctor) => <DoctorCard key={doctor.id} doctor={doctor}></DoctorCard>)
+                    doctors?.map((doctor) => <DoctorCard key={doctor.id} doctor={doctor}></DoctorCard>)
                 }
             </div>
         </div>

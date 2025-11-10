@@ -1,15 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { AppContext } from './Context/CreateContext';
+import { Link } from 'react-router';
 
 const DoctorCard = ({ doctor }) => {
 
-    const { handleAppointmentOfDoctors } = useContext(AppContext);
-
-    const {name, image, speciality, education, workingAt, experience} = doctor;
+    const {id, name, image, speciality, education, workingAt, experience} = doctor;
 
     return (
-        <div>
-            <div className="card bg-base-100 w-96 shadow-sm">
+        <div className='shadow-2xl p-5 rounded-2xl'>
+            <div className="card bg-base-100 w-[400px]">
                 <figure>
                     <img
                         src={image}
@@ -25,7 +24,7 @@ const DoctorCard = ({ doctor }) => {
                     <div className="badge badge-success text-white">{experience}</div>
                 </div>
                 <div>
-                <button onClick={() => handleAppointmentOfDoctors(doctor)}>Add Doctors</button>
+                <Link className='btn btn-primary w-full' to={`/doctors-details/${id}`}>Show Details</Link>
             </div>
             </div>
         </div>
